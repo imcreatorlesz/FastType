@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#edf1f6">
+  <title>FastType — печатай быстрее</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header class="top">
+      <h1>FastType</h1>
+      <p class="best" id="best"></p>
+    </header>
+
+    <section class="controls" aria-label="Настройки">
+      <div class="group" role="group" aria-label="Язык" data-setting="lang">
+        <button type="button" data-value="ru">Русский</button>
+        <button type="button" data-value="en">English</button>
+      </div>
+      <div class="group" role="group" aria-label="Длительность" data-setting="time">
+        <button type="button" data-value="30">30 с</button>
+        <button type="button" data-value="60">60 с</button>
+      </div>
+      <div class="group" role="group" aria-label="Режим" data-setting="mode">
+        <button type="button" data-value="normal">Обычный</button>
+        <button type="button" data-value="weak">Слабые клавиши</button>
+      </div>
+    </section>
+
+    <section class="stats" aria-live="off">
+      <div><strong id="time">30</strong><span>секунд</span></div>
+      <div><strong id="wpm">0</strong><span>слов/мин</span></div>
+      <div><strong id="acc">100%</strong><span>точность</span></div>
+    </section>
+
+    <section class="stage" id="stage">
+      <div class="text" id="text" aria-label="Текст для печати"></div>
+      <p class="hint" id="hint">Нажми сюда и начни печатать</p>
+    </section>
+
+    <input id="capture" type="text" inputmode="text" autocomplete="off" autocorrect="off"
+           autocapitalize="off" spellcheck="false" aria-label="Поле ввода">
+
+    <div class="actions">
+      <button type="button" class="primary" id="restart">Заново</button>
+      <span class="tip">Tab или Esc — начать заново</span>
+    </div>
+
+    <section class="result" id="result" hidden>
+      <h2 id="r-title">Результат</h2>
+      <div class="result-grid">
+        <div><strong id="r-wpm">0</strong><span>слов/мин</span></div>
+        <div><strong id="r-acc">0%</strong><span>точность</span></div>
+        <div><strong id="r-chars">0</strong><span>верных знаков</span></div>
+        <div><strong id="r-err">0</strong><span>ошибок</span></div>
+      </div>
+      <p id="r-note"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Слабые клавиши</h2>
+      <ul class="weak" id="weak"></ul>
+      <p class="muted">Включи режим «Слабые клавиши», и в тексте будет больше слов с этими буквами.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Прогресс</h2>
+      <div class="history" id="history"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
